@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-
-import store from "./redux/store";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
+import MainRouter from './routers/MainRouter';
 
 function App() {
     return (
         <Provider store={store}>
-            <LoginPage />
+            <PersistGate loading={null} persistor={persistor}>
+                <MainRouter />
+            </PersistGate>
         </Provider>
     );
 }

@@ -2,34 +2,36 @@ import React from "react";
 import FacebookLogin from "react-facebook-login";
 import { connect } from "react-redux";
 
-function LoginPage(props) {
-    console.log(props)
+function LoginPage({ facebookLogin, logout, session }) {
     const responseFacebook = response => {
-        props.facebookLogin(response);
+        facebookLogin(response);
     };
+
+    console.log(session)
 
     return (
         <div className="App">
-            <header className="App-header">
+            {session.user !== null ?
+                <button onClick={logout}>Logout</button>
+                :
                 <FacebookLogin
                     autoLoad={false}
                     appId={process.env.REACT_APP_FACEBOOK_APP_ID}
                     fields="name,email,picture"
-                    onClick={() => { }}
                     callback={responseFacebook}
-                />
-            </header>
+                />}
         </div>
     );
 }
 
 // name: value to obtain
 const mapState = state => ({
-    state: state.session
+    session: state.session
 });
 
 const mapDispatch = dispatch => ({
-    facebookLogin: payload => dispatch.session.facebookLogin(payload)
+    facebookLogin: payload => dispatch.session.facebookLogin(payload),
+    logout: () => dispatch.session.logout()
 });
 
 export default connect(
