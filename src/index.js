@@ -5,6 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store";
 import MainRouter from './routers/MainRouter';
 import WebFont from "webfontloader";
+import { ThemeProvider, ThemeContext } from './blocks/ThemeContext';
 
 import './style.scss';
 
@@ -29,7 +30,9 @@ function App() {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                {fontLoaded ? <MainRouter /> : null}
+                <ThemeContext.Provider>
+                    {fontLoaded ? <MainRouter /> : null}
+                </ThemeContext.Provider>
             </PersistGate>
         </Provider>
     );

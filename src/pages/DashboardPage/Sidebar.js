@@ -13,6 +13,28 @@ const menuItems = [
         title: "Likes",
         iconName: "fas fa-share-alt",
         path: "/dashboard/likes",
+    },
+    {
+        title: "Simulate crash",
+        iconName: "fas fa-bug",
+        path: "/dashboard/crash",
+    }, {
+        title: "Posts",
+        iconName: "fas fa-mail-bulk",
+        path: "/dashboard/posts",
+    }, {
+        title: "My posts",
+        iconName: "fas fa-clone",
+        path: "/dashboard/myposts",
+    }, {
+        title: "Box",
+        iconName: "fas fa-box-open",
+        path: "/dashboard/box",
+    },
+    {
+        title: "Theme",
+        iconName: "fas fa-palette",
+        path: "/dashboard/theme",
     }, {
         title: "Logout",
         iconName: "fas fa-sign-out-alt",
