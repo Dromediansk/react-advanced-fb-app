@@ -8,6 +8,7 @@ import Posts from './content/Posts';
 import MyPosts from './content/MyPosts';
 import Box from './content/Box';
 import Theme from './content/Theme';
+import Pokemons from './content/Pokemons';
 
 import ErrorBoundary from "../../blocks/Errorboundary";
 
@@ -30,6 +31,7 @@ const DashboardPage = () => {
                         <Route path="/dashboard/myposts" component={MyPosts} />
                         <Route path="/dashboard/box" component={Box} />
                         <Route path="/dashboard/theme" component={Theme} />
+                        <Route path="/dashboard/pokemons" component={Pokemons} />
                         <Redirect to="/dashboard/profile" />
                     </Switch>
                 </ErrorBoundary>

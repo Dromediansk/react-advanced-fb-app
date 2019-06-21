@@ -23,7 +23,7 @@ function Posts() {
     return (
         <PostsProvider mode="all-posts">
             {(posts, error) => (
-                <section className="content profile">
+                <section className="content posts">
                     <h1>Posts</h1>
                     {renderContent(posts, error)}
                 </section>

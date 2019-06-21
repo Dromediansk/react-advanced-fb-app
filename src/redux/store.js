@@ -1,13 +1,13 @@
 import { init } from '@rematch/core';
-import session from './models/session';
 import createRematchPersist, { getPersistor } from '@rematch/persist';
+import createLoadingPlugin from '@rematch/loading';
 import httpClient from '../services/http';
+import models from './models';
 
 const initData = {
-    models: {
-        session
-    },
+    models,
     plugins: [
+        createLoadingPlugin(),
         createRematchPersist({
             whitelist: ["session"],
             version: 1,

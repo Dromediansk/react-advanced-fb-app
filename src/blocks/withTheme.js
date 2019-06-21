@@ -6,7 +6,7 @@ export default function withTheme(MyComponent) {
         render() {
             return (
                 <ThemeConsumer>
-                    {theme => <MyComponent theme={theme} />}
+                    {theme => <MyComponent theme={theme} {...this.props} />}
                 </ThemeConsumer>
             )
         }

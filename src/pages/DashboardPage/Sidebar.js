@@ -38,6 +38,10 @@ const menuItems = [
         iconName: "fas fa-palette",
         path: "/dashboard/theme",
     }, {
+        title: "Pokemons",
+        iconName: "fas fa-dragon",
+        path: "/dashboard/pokemons",
+    }, {
         title: "Logout",
         iconName: "fas fa-sign-out-alt",
         path: "/dashboard/profile",
