@@ -8,14 +8,16 @@ function Pokemons({ fetchPokemons, loading, pokemons }) {
             {theme => {
                 return (
                     <section className="content pokemons">
+                        <h1>Pokemons</h1>
+
                         <div>
-                            <button onClick={fetchPokemons}>Fetch more</button>
+                            <button onClick={fetchPokemons} disabled={loading}>Fetch more</button>
                             <div>
                                 {pokemons.map((pokemon, index) => {
                                     return <div key={index}>{`${index}. ${pokemon.name} ${pokemon.weight} hectograms`}</div>
                                 })}
                             </div>
-                            {loading && 'loading...'}
+                            {loading && <div>loading...</div>}
                         </div>
                     </section>
                 )
@@ -25,7 +27,7 @@ function Pokemons({ fetchPokemons, loading, pokemons }) {
 }
 
 const mapState = state => ({
-    loading: state.loading.effects.login.submit,
+    loading: state.loading.effects.pokemons.fetchPokemons,
     pokemons: state.pokemons.results
 })
 

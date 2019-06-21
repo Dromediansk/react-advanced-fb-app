@@ -119,9 +119,14 @@ const Sidebar = ({ history, user, logout, location }) => {
 
                             <div className="menu">
                                 {menuItems.map((item, idx) => (
-                                    <div key={idx} className={`menu-item ${location.pathname === item.path && 'active'}`}
+                                    <div
+                                        key={idx}
+                                        className={`menu-item ${location.pathname === item.path && 'active'}`}
                                         onClick={() => {
-                                            item.title === "Logout" && setLogoutModalVisible(true);
+                                            if (item.title === "Logout") {
+                                                setLogoutModalVisible(true);
+                                                return;
+                                            }
                                             history.push(item.path)
                                         }}>
                                         <i className={item.iconName} />

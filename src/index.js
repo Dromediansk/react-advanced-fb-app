@@ -10,7 +10,7 @@ import { ThemeProvider } from './blocks/ThemeContext';
 import './style.scss';
 
 function App() {
-    const [fontLoaded, setFontLoaded] = useState(false)
+    const [fontLoaded, setFontLoaded] = useState(true)
 
     useEffect(() => {
         WebFont.load({
