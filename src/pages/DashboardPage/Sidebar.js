@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import './style.scss';
 
+import { ThemeConsumer } from '../../blocks/ThemeContext';
+
 const menuItems = [
     {
         title: "Profile",
@@ -98,29 +100,35 @@ const Sidebar = ({ history, user, logout, location }) => {
                 setVisible={setLogoutModalVisible}
             />
 
-            <div className="sidebar">
-                <div className="profile-preview">
-                    <img alt="avatar" src={user.picture.data.url} className="avatar" />
+            <ThemeConsumer>
+                {theme => {
+                    return (
+                        <div className="sidebar" style={{ backgroundColor: theme.brand, color: theme.contrast }}>
+                            <div className="profile-preview">
+                                <img alt="avatar" src={user.picture.data.url} className="avatar" />
 
-                    <div className="profile-info">
-                        <label className="name">{user.name}</label>
-                        <label>Registered</label>
-                    </div>
-                </div>
+                                <div className="profile-info">
+                                    <label className="name">{user.name}</label>
+                                    <label>Registered</label>
+                                </div>
+                            </div>
 
-                <div className="menu">
-                    {menuItems.map((item, idx) => (
-                        <div key={idx} className={`menu-item ${location.pathname === item.path && 'active'}`}
-                            onClick={() => {
-                                item.title === "Logout" && setLogoutModalVisible(true);
-                                history.push(item.path)
-                            }}>
-                            <i className={item.iconName} />
-                            <label>{item.title}</label>
+                            <div className="menu">
+                                {menuItems.map((item, idx) => (
+                                    <div key={idx} className={`menu-item ${location.pathname === item.path && 'active'}`}
+                                        onClick={() => {
+                                            item.title === "Logout" && setLogoutModalVisible(true);
+                                            history.push(item.path)
+                                        }}>
+                                        <i className={item.iconName} />
+                                        <label>{item.title}</label>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    ))}
-                </div>
-            </div>
+                    )
+                }}
+            </ThemeConsumer>
         </>
     )
 }

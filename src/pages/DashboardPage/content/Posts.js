@@ -1,5 +1,6 @@
 import React from 'react';
 import PostsProvider from '../../../blocks/PostsProvider';
+import withTheme from '../../../blocks/withTheme';
 
 function Posts() {
 
@@ -31,4 +32,4 @@ function Posts() {
     )
 }
 
-export default Posts;
+export default withTheme(Posts);

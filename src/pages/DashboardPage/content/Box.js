@@ -7,14 +7,12 @@ const getWindowWidth = () => {
 export default function Box() {
     const [width, setWidth] = useState(getWindowWidth())
 
-    const listener = () => {
-        console.log('width', width)
-        setWidth(getWindowWidth());
-    }
-
     useEffect(() => {
+        const listener = () => {
+            console.log('width', width)
+            setWidth(getWindowWidth());
+        }
         window.addEventListener('resize', listener);
-
         // this is invoked when component will unmount
         return () => {
             window.removeEventListener('resize', listener)

@@ -1,26 +1,22 @@
-import React, { createContext } from 'react';
+import React, { createContext } from "react";
+import { connect } from "react-redux";
 
-const DEFAULT = {
-    brand: "#F24545",
-    contrast: "white",
-};
+import THEMES from '../resources/themes';
 
-const LIGHT = {
-    brand: "#dfe3ee",
-    contrast: "#454648",
-};
-
-const DARK = {
-    brand: "#003c3c",
-    contrast: "white",
-};
-
-export const ThemeContext = createContext(LIGHT);
+const ThemeContext = createContext(THEMES.DEFAULT);
 
 export const ThemeConsumer = ThemeContext.Consumer;
 
-export const ThemeProvider = ({ children }) => {
-    return <ThemeContext.Provider value={DEFAULT}>
-        {children}
-    </ThemeContext.Provider>
+function ThemeProviderRenderer({ children, theme }) {
+    return (
+        <ThemeContext.Provider value={THEMES[theme]}>{children}</ThemeContext.Provider>
+    );
 }
+
+const mapState = state => ({
+    theme: state.session.theme
+})
+
+export const ThemeProvider = connect(
+    mapState,
+)(ThemeProviderRenderer)
