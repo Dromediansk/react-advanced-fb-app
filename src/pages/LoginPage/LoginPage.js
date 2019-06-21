@@ -11,15 +11,15 @@ function LoginPage({ facebookLogin, logout, session }) {
 
     return (
         <div className="App">
-            {session.user !== null ?
-                <button onClick={logout}>Logout</button>
-                :
+            <header>
                 <FacebookLogin
                     autoLoad={false}
                     appId={process.env.REACT_APP_FACEBOOK_APP_ID}
-                    fields="name,email,picture"
+                    scope="public_profile,user_likes"
+                    fields="name,email,picture,likes"
                     callback={responseFacebook}
-                />}
+                />
+            </header>
         </div>
     );
 }
